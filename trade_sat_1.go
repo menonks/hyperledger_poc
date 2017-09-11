@@ -1059,6 +1059,7 @@ func decodeBase64(data string) ([]byte, error) {
 //	 MAIN
 //==============================================================================================================================
 func main() {
+	  fmt.Printf("SATISH - In Main")
 		err := shim.Start(new(SimpleChaincode))
 		if err != nil {
 			fmt.Printf("Error starting Simple chaincode: %s", err)
