@@ -17,7 +17,7 @@ var logger = shim.NewLogger("DCTChaincode")
 //	 Constants
 //==============================================================================================================================
 //WorldState
-const WS_CARGO_ENROUTE = "CRGENR"
+const WS_CARGO_ENROUTE = "CRGENR1"
 const WS_DOCS_UPLOADED = "DOCSUPL"
 const WS_TRADE_DECLARED = "TRDDECL"
 const WS_TRADE_CLEARED = "TRDCLRD"
