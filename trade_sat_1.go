@@ -263,6 +263,7 @@ func (party Participant) validate() error {
 //	 Chaincode Methods - Trade Entity
 //==============================================================================================================================
 func (t *SimpleChaincode) create_trade(stub shim.ChaincodeStubInterface, caller string, caller_affiliation string, trade_json []byte) ([]byte, error) {
+  fmt.Printf("SATISH - create_trade")
 
 	var trades Trade_List
 
@@ -349,6 +350,8 @@ func (t *SimpleChaincode) save_trade(stub shim.ChaincodeStubInterface, trade Tra
 
 //	 get_trades
 func (t *SimpleChaincode) get_trades(stub shim.ChaincodeStubInterface, caller string, caller_affiliation string) ([]byte, error) {
+  fmt.Printf("SATISH - get_trades")
+
 	bytes, err := stub.GetState(MK_TRADE)
 
 	if err != nil {
@@ -717,6 +720,8 @@ func (t *SimpleChaincode) save_participant(stub shim.ChaincodeStubInterface, par
 
 //	 get_participants
 func (t *SimpleChaincode) get_participants(stub shim.ChaincodeStubInterface, caller string, caller_affiliation string) ([]byte, error) {
+	fmt.Printf("SATISH - get_participants")
+
 	bytes, err := stub.GetState(MK_PARTICIPANT)
 
 	if err != nil {
@@ -763,6 +768,7 @@ func (t *SimpleChaincode) get_participants(stub shim.ChaincodeStubInterface, cal
 //					JSON into the Trade struct for use in the contract. Returns the participant struct.
 //					Returns empty v if it errors.
 func (t *SimpleChaincode) retrieve_participant(stub shim.ChaincodeStubInterface, participantId string) ([]byte, error) {
+  fmt.Printf("SATISH - retrieve_participant")
 
 	bytes, err := stub.GetState(participantId)
 
@@ -990,6 +996,8 @@ func createDocument(document_json []byte, docType string) (DocumentInt, error) {
 }
 
 func createParticipantFactory(participant_json []byte, partyType string) (ParticipantInt, error) {
+	fmt.Printf("SATISH - In createParticipantFactory")
+
 	switch partyType {
 	case PT_BANK:
 		var bnk Bank
@@ -1029,6 +1037,7 @@ func createParticipantFactory(participant_json []byte, partyType string) (Partic
 }
 
 func decodeBase64(data string) ([]byte, error) {
+  fmt.Printf("SATISH - In decodeBase64")
 
 	arg0, err := base64.StdEncoding.DecodeString(data)
 
@@ -1060,6 +1069,7 @@ func decodeBase64(data string) ([]byte, error) {
 //==============================================================================================================================
 func main() {
 	  fmt.Printf("SATISH - In Main")
+
 		err := shim.Start(new(SimpleChaincode))
 		if err != nil {
 			fmt.Printf("Error starting Simple chaincode: %s", err)
